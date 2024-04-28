@@ -76,7 +76,8 @@ class DBStorage:
         self.__session.remove()
 
     def get(self, cls, id):
-        """Returns the object based on the class and its ID, or None if not found"""
+        """Returns the object based on the class and its ID,
+        or None if not found"""
         objec = None
         if cls is not None and issubclass(cls, BaseModel):
             objec = self.__session.query(cls).filter(cls.id == id).first()
