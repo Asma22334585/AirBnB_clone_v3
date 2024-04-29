@@ -27,3 +27,17 @@ class User(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """initializes user"""
         super().__init__(*args, **kwargs)
+
+    @password
+    def password(self):
+        """ password """
+        return self._password
+
+    @newpassword
+    def password(self, value):
+        """ new password """
+        self._password = md5(value.encode()).hexdigest()
+
+    def save(self):
+        """ Save password """
+        super().save()
