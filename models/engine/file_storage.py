@@ -73,7 +73,7 @@ class FileStorage:
         """Returns the object based on the class and its ID"""
         objec = None
         if cls is not None and issubclass(cls, BaseModel):
-            objec = self.__session.query(cls).filter(cls.id == id).first()
+            objec = self.__objects.query(cls).filter(cls.id == id).first()
         return objec
 
     def count(self, cls=None):
